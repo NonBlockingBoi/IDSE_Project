@@ -10,7 +10,6 @@ Repository containing two machine learning and data science projects developed b
 
 ```
 IDSE_Project/
-├── Dataset                        # Link / reference to the WM-811K (LSWMD.pkl) wafer map dataset
 ├── WM811K_CNN.ipynb               # PyTorch Colab notebook implementing the 9-stage WaferResNet pipeline
 ├── WM811K_WaferResNet_Report.pdf  # 7-page technical report documenting the pipeline, metrics, and future work
 ├── Madras_Race_Club.html          # Self-contained HTML5 + Three.js interactive regression game ("Last Bet")
@@ -27,7 +26,7 @@ IDSE_Project/
 
 * **Report:** `WM811K_WaferResNet_Report.pdf`
 
-* **Dataset:** [Dataset](https://www.google.com/search?q=./Dataset) — WM-811K (`LSWMD.pkl`, 811,457 raw wafers; 172,950 labeled across `none` + 8 defect classes)
+* **Dataset:** [Dataset]([https://www.google.com/search?q=./Dataset](https://www.kaggle.com/datasets/qingyi/wm811k-wafer-map) — WM-811K (`LSWMD.pkl`, 811,457 raw wafers; 172,950 labeled across `none` + 8 defect classes)
 
 * **Model & Results:** Single-model `WaferResNet` (174,905 parameters, 0.6672 MB FP32) trained on `56×56` nearest-neighbor resized wafer maps with stratified splitting prior to geometric augmentation, achieving **96.32% test accuracy** and **0.86 macro-F1** on the untouched 25,943-sample test set.
 
