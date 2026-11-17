@@ -111,6 +111,20 @@ button.big{font-size:20px;padding:14px 34px}.row.c{justify-content:center}
 .cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9}.cf i{position:absolute;top:-16px;width:10px;height:16px;animation:fall 2.8s linear forwards}@keyframes fall{to{transform:translateY(108vh) rotate(720deg)}}
 @media(prefers-reduced-motion:reduce){.cf{display:none}}
 @media(max-width:420px){.steps i{width:28px;height:28px;font-size:14px}.rn{display:none}h2{font-size:26px}}
+
+h3{font:800 17px Rockwell,Georgia,serif;margin:20px 0 6px}h4{font-family:inherit}
+body[data-s=learn]{background:linear-gradient(#2b1d5e,#5b3fa6) fixed}body[data-s=stats]{background:linear-gradient(#0f3d3e,#1f7a6d) fixed}
+#snd{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:10px;z-index:30;width:42px;height:42px;padding:0;border-radius:50%;font-size:20px;background:#0a0f14;color:#fff;border-color:#2a3a4a}
+#hd{padding-right:60px}
+.st5{list-style:none;padding:0;margin:14px 0;display:grid;gap:10px}.st5 li{display:flex;gap:14px;align-items:center;background:var(--bg);border-radius:16px;padding:10px 14px}.st5 li>b{font-size:34px;line-height:1}.st5 h4{margin:0;font-size:16px}.st5 p{margin:2px 0 0;font-size:13px;color:var(--mut);line-height:1.35}
+.lsv{width:100%;max-width:440px;display:block;margin:0 auto;color:var(--pt);background:var(--bg);border-radius:14px}
+.wfb{display:grid;gap:8px}.wf{display:grid;grid-template-columns:1fr 72px 58px;align-items:center;gap:8px;text-align:left;font-weight:600;font-size:13px;padding:8px 12px;border-radius:12px;background:var(--bg);border:2px solid var(--bd)}
+.wf i{display:block;height:12px;border-radius:6px}.wf b{font:700 12px "Courier New",monospace;text-align:right}.wf.off{opacity:.35;text-decoration:line-through}.wf.base,.wf.tot{pointer-events:none}
+.wf.tot{grid-template-columns:1fr auto;background:var(--acc);color:#10273b;font-size:18px;border-color:#a87800}.wf.tot b{font-size:22px}
+.dots{display:flex;gap:8px;justify-content:center;margin:16px 0 0}.dots i{width:10px;height:10px;border-radius:50%;background:var(--bd);transition:.2s}.dots i.on{background:var(--acc);transform:scale(1.4)}
+.q4{grid-template-columns:repeat(2,1fr)}
+.hb{display:grid;grid-template-columns:96px 1fr 62px;align-items:center;gap:8px;margin:6px 0;font-size:13px}.hb i{display:block;height:14px;border-radius:7px;background:#9aa7b3}.hb.mine i{background:#f2b705}.hb b{font:700 12px "Courier New",monospace;text-align:right}
+canvas#rcv{width:100%;height:210px;display:block;background:var(--bg);border-radius:12px}
 </style>
 </head>
 <body data-s="intro">
@@ -138,15 +152,24 @@ button.big{font-size:20px;padding:14px 34px}.row.c{justify-content:center}
 </div></section>
 
 <section id="story"><h2>Ravi’s losing streak</h2><div class="cg" id="cg"></div><div class="row"><button class="pri" id="snext">Next panel ▶</button><button id="sskip">Skip story</button></div></section>
-<section id="how"><h2>🎮 How to play</h2><p class="sub">Beat the track in 6 races.</p>
-<div class="tiles"><div><b>🛒</b>Pick up to 5 clues</div><div><b>📈</b>Tune your model</div><div><b>🎟️</b>Bet on a horse</div><div><b>🏆</b>Win coins</div></div>
+<section id="learn"><h2 id="lh"></h2><p class="sub">Optional · skip any time</p>
+<div class="say"><i>👩‍🏫</i><span id="lx"></span></div><div id="lg"></div><div id="lctl"></div><div class="dots" id="ld"></div>
+<div class="bar"><button id="lskip">Skip ▶</button><span><button id="lb">◀</button> <button class="pri" id="ln">Next ▶</button></span></div></section>
+
+<section id="how"><h2>🎮 How to play</h2><p class="sub">Goal: finish 6 races with more than ₹25,000.</p>
+<ol class="st5">
+<li><b>🛒</b><div><h4>1. Pick clues</h4><p>Clues are facts about each horse, like speed or weight. Choose up to 5. Each one costs coins.</p></div></li>
+<li><b>📈</b><div><h4>2. Tune your model</h4><p>Slide the sliders until the dots sit on the gold line, or tap ✨ Auto-fit.</p></div></li>
+<li><b>🎟️</b><div><h4>3. Place a bet</h4><p>Tap a horse (⭐ is your model’s favourite) and set a stake. It leaves your wallet at once.</p></div></li>
+<li><b>🏁</b><div><h4>4. Watch the race</h4><p>One lap round the oval. Your horse wears a gold “YOUR BET” tag.</p></div></li>
+<li><b>🏆</b><div><h4>5. Collect and repeat</h4><p>New clues cost ₹500 × the race number. Clues you already own stay free.</p></div></li></ol>
 <div class="pay"><span>🥇 1st <b>2×</b></span><span>🥈 2nd <b>1.25×</b></span><span>🥉 3rd <b>money back</b></span></div>
 <div class="row c"><button class="pri big" id="hgo">Let’s go ▶</button></div></section>
 
 <section id="fac"><h2>🛒 Pick your clues</h2><p class="sub" id="fsub"></p><div id="fl" class="fgrid"></div>
 <div class="bar"><span id="fsum"></span><button class="pri" id="fgo">Next ▶</button></div></section>
 
-<section id="lab"><h2>📈 Build your model</h2><p class="sub">Make the dots hug the gold line.</p>
+<section id="lab"><h2>📈 Build your model</h2><p class="sub">Slide until the dots hug the gold line, or tap ✨ Auto-fit.</p>
 <div class="say"><i>👩‍🏫</i><span id="coach"></span></div>
 <canvas id="plot" role="img" aria-label="Predicted versus actual finish time for past races"></canvas>
 <div class="chips"><div>🎯 Your miss<b id="you"></b></div><div>🏆 Best<b id="best"></b></div><div>🆕 New races<b id="tst"></b></div></div>
@@ -155,7 +178,7 @@ button.big{font-size:20px;padding:14px 34px}.row.c{justify-content:center}
 <details class="bk"><summary>ℹ️ How it works</summary><p>Predicted time = baseline + each clue × its slider.</p><p>The baseline lifts or lowers every prediction together.</p><p>Auto-fit finds the sliders with the smallest total miss (least squares).</p></details>
 <div class="bar"><span><button id="tres">👁 Misses</button> <button id="snap">✨ Auto-fit</button></span><button class="pri" id="go">Bets ▶</button></div></section>
 
-<section id="bets"><h2>🎟️ Place your bet</h2><p class="sub">⭐ is your model’s favourite. Tap a horse.</p>
+<section id="bets"><h2>🎟️ Place your bet</h2><p class="sub">Tap a horse (⭐ = your model’s favourite), set a stake, then bet. The stake leaves your wallet right away.</p>
 <div id="hc" class="hgrid"></div>
 <div class="row c"><button id="fvb">📊 Stats</button></div>
 <div class="stk"><button id="sm" aria-label="Lower stake">−</button><div><small>STAKE</small><b id="amtv"></b></div><button id="sp2" aria-label="Raise stake">+</button></div>
@@ -166,7 +189,16 @@ button.big{font-size:20px;padding:14px 34px}.row.c{justify-content:center}
 <section id="race"><div id="stage"><div id="mudb"></div><div id="betb"></div><div id="live"></div></div></section>
 
 <section id="deb"><div id="dbody"></div></section>
+
+<section id="stats"><h2>📊 Reveal stats</h2><p class="sub">Were your clues the right ones?</p>
+<div class="chips q4" id="sk"></div>
+<h3>Average miss per race</h3><div id="sb"></div>
+<h3>Every prediction</h3><canvas id="rcv" role="img" aria-label="Bar chart of every prediction miss"></canvas><p class="note">▲ slower than predicted · ▼ faster · gold outline = the horse you bet on</p>
+<h3>Clue report</h3><div id="cr"></div>
+<div class="say" id="sv"></div>
+<div class="bar"><span></span><button class="pri big" id="again">🔁 Play again</button></div></section>
 </div>
+<button id="snd" aria-label="Sound on or off">🔊</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -193,7 +225,7 @@ const COLS=[0xd64541,0x2f80ed,0xf2b705,0x8e44ad,0x1fa37a,0xe67e22,0xe84393,0x344
 const HEX=COLS.map(c=>"#"+c.toString(16).padStart(6,"0"));
 function mkRow(mud,nm,ln){const s=54+rnd()*12,r={speed:s,last3:s+gauss()*1.2,mud,jw:50+rnd()*12,rest:2+rnd()*12,stam:40+Math.round(rnd()*50),jexp:1+Math.round(rnd()*19),lane:ln||1+Math.floor(rnd()*8),age:3+Math.floor(rnd()*8),trn:5+Math.round(rnd()*35),hw:420+Math.round(rnd()*100),wins:Math.floor(rnd()*7)};
  r.mean=92.7-.35*s-.15*r.last3+.45*mud+.12*r.jw-.06*r.rest-.05*r.stam-.06*r.jexp+.12*r.lane+.08*r.age-.025*r.trn+.012*r.hw-.1*r.wins;r.t=r.mean+gauss()*1.4;return r}
-let raceSeed=0,owned=[],sp=1,data=[],test=[],cash=25000,day=1,sel=[],m={b:70,c:{}},horses=[],pick=0,bet=0,over=false,showRes=true,mud=0;
+let raceSeed=0,hist=[],spent=0,ls=0,l1=62,l2=[1,1,1,1],l3=0,owned=[],sp=1,data=[],test=[],cash=25000,day=1,sel=[],m={b:70,c:{}},horses=[],pick=0,bet=0,over=false,showRes=true,mud=0;
 function initData(){seed=11;data=[];test=[];for(let i=0;i<24;i++)data.push(mkRow(Math.floor(rnd()*11)));for(let i=0;i<40;i++)test.push(mkRow(Math.floor(rnd()*11)))}
 const pr=(md,r)=>sel.reduce((a,k)=>a+(md.c[k]||0)*r[k],md.b);
 const rmse=(md,set)=>Math.sqrt(set.reduce((a,r)=>a+(r.t-pr(md,r))**2,0)/set.length);
@@ -203,7 +235,7 @@ function fit(){const k=sel.length+1,X=data.map(r=>[1,...sel.map(f=>r[f])]);
   for(let r=0;r<k;r++)if(r!==i){const f=M[r][i]/M[i][i];for(let c=i;c<=k;c++)M[r][c]-=f*M[i][c]}}
  const o={b:M[0][k]/M[0][0],c:{}};sel.forEach((f,i)=>o.c[f]=M[i+1][k]/M[i+1][i+1]);return o}
 const STEP={fac:1,lab:2,bets:3,race:4,deb:5};
-function show(id){document.querySelectorAll("section").forEach(x=>x.classList.toggle("on",x.id===id));$("hd").classList.toggle("hide",["intro","story","how"].includes(id));document.body.dataset.s=id;const c=STEP[id]||0;document.querySelectorAll("#steps i").forEach(e=>{const n=+e.dataset.n;e.className=n<c?"done":n===c?"on":""});scrollTo(0,0)}
+function show(id){document.querySelectorAll("section").forEach(x=>x.classList.toggle("on",x.id===id));$("hd").classList.toggle("hide",["intro","story","learn","how"].includes(id));document.body.dataset.s=id;const c=STEP[id]||0;document.querySelectorAll("#steps i").forEach(e=>{const n=+e.dataset.n;e.className=n<c?"done":n===c?"on":""});mus(id);scrollTo(0,0)}
 const hud=()=>{$("day").textContent=day+"/6";$("cash").textContent=INR(cash)};
 
 /* intro + factor shop */
@@ -221,18 +253,18 @@ const PN=[
 {bg:"#c9c0d9",cap:"Loss number 47. His wallet filed for divorce.",art:ravi("cry")+`<div class='prop' style='right:8%;bottom:12%'>WALLET<br>₹0</div>`,bub:"Mom, sorry… I can’t pay the rent.",pos:"top:32%;right:3%",sfx:"SOB…",sp:"bottom:44%;right:10%"},
 {bg:"#f3d98b",cap:"Then he found a game that teaches betting with maths.",art:ravi("idea")+`<div class='prop' style='right:6%;bottom:5%'>LAST BET<br>(the app)</div>`,bub:"A… regression line?! I’m in.",pos:"top:32%;right:3%",sfx:"DING!",sp:"bottom:34%;right:5%"}];
 function story(){sp=1;$("cg").innerHTML=PN.map(p=>`<div class='cp' style='background:${p.bg}'><div class='cap'>${p.cap}</div>${p.art}${p.sfx?`<div class='sfx' style='${p.sp}'>${p.sfx}</div>`:""}<div class='bub' style='${p.pos}'>${p.bub}</div></div>`).join("");su()}
-function su(){document.querySelectorAll(".cp").forEach((e,i)=>e.classList.toggle("show",i<sp));$("snext").textContent=sp<4?"Next panel ▶":"How to play ▶"}
-$("snext").onclick=()=>{if(sp<4){sp++;su()}else show("how")};$("sskip").onclick=()=>show("how");
+function su(){document.querySelectorAll(".cp").forEach((e,i)=>e.classList.toggle("show",i<sp));$("snext").textContent=sp<4?"Next panel ▶":"Learn the idea ▶"}
+const toLearn=()=>{ls=0;l3=0;learn();show("learn")};$("snext").onclick=()=>{if(sp<4){sp++;su()}else toLearn()};$("sskip").onclick=toLearn;
 $("hgo").onclick=()=>{facUI();show("fac")};
 
 $("start").onclick=()=>{initData();hud();story();show("story")};
 function facUI(){
- $("fsub").textContent=day>1?"New clues "+INR(price())+" each · owned clues are free":"Up to 5 clues · "+INR(price())+" each";
+ $("fsub").textContent=day>1?"Race "+day+": new clues "+INR(price())+" each · owned clues stay free":"Clues are facts about each horse. Pick up to 5 · "+INR(price())+" each";
  $("fl").innerHTML=F.map(f=>{const on=sel.includes(f.k),ow=owned.includes(f.k);return`<button class="fcd${on?" on":""}" data-k="${f.k}" aria-pressed="${on}"><span class="ic">${f.i}</span><b>${f.n}</b><small>${f.d}</small><em>${ow?"OWNED ✓":INR(price())}</em>${on?"<u>✔</u>":""}</button>`}).join("");
  $("fsum").innerHTML="<b>"+sel.length+"/5</b> picked · pay <b>"+INR(cost())+"</b>";$("fsum").classList.toggle("neg",cost()>cash);
  $("fgo").disabled=!sel.length||cost()>cash;$("fgo").textContent=cost()?"Buy ▶":"Next ▶"}
 $("fl").onclick=e=>{const b=e.target.closest("[data-k]");if(!b)return;const k=b.dataset.k,i=sel.indexOf(k);if(i>=0)sel.splice(i,1);else if(sel.length<5)sel.push(k);facUI()};
-$("fgo").onclick=()=>{cash-=cost();hud();owned=[...sel];const oc=m.c;m={b:day>1?m.b:Math.round(data.reduce((a,r)=>a+r.t,0)/data.length),c:{}};sel.forEach(k=>m.c[k]=oc[k]||0);
+$("fgo").onclick=()=>{spent+=cost();cash-=cost();hud();owned=[...sel];const oc=m.c;m={b:day>1?m.b:Math.round(data.reduce((a,r)=>a+r.t,0)/data.length),c:{}};sel.forEach(k=>m.c[k]=oc[k]||0);
  $("sl").innerHTML=`<label class="sli"><span class="sn">🧮 Baseline</span><span class="sv" id="vb"></span><input type="range" id="rb" min="0" max="160" step="0.5"></label>`+sel.map(k=>{const f=F.find(f=>f.k===k);return`<label class="sli"><span class="sn">${f.i} ${f.s}</span><span class="sv" id="v_${k}"></span><input type="range" data-k="${k}" min="-2" max="2" step="0.005" value="0"></label>`}).join("");
  lab();show("lab")};
 $("sl").oninput=e=>{const t=e.target;if(t.id==="rb")m.b=+t.value;else m.c[t.dataset.k]=+t.value;lab()};
@@ -278,7 +310,7 @@ $("sm").onclick=()=>{stake-=500;su2()};$("sp2").onclick=()=>{stake+=500;su2()};
 $("qs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b)return;stake=b.dataset.q==="all"?Math.floor(cash):+b.dataset.q;su2()};
 $("fvb").onclick=()=>$("hc").classList.toggle("stats");
 $("go").onclick=newRace;$("back").onclick=()=>show("lab");
-$("place").onclick=()=>{bet=Math.max(1,Math.min(Math.floor(cash),stake));cash-=bet;hud();show("race");startRace()};
+$("place").onclick=()=>{bet=Math.max(1,Math.min(Math.floor(cash),stake));cash-=bet;hud();show("race");sfx("go");startRace()};
 
 /* 3D oval stadium */
 const LS=70,RR=30,LW=2.3,ORD=n=>n+(n%100>=11&&n%100<=13?"th":["th","st","nd","rd"][n%10]||"th");
@@ -325,8 +357,8 @@ function mkHorse(i){
  const sa=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:numTex(i+1,i)}));sa.position.set(.3,2.5,.62);g.add(sa);const sb=sa.clone();sb.position.z=-.62;sb.rotation.y=Math.PI;g.add(sb);
  const legs=[];[[-1.1,.4],[-1.1,-.4],[1.1,.4],[1.1,-.4]].forEach(([x,z])=>{const ge=new THREE.BoxGeometry(.3,1.6,.3);ge.translate(0,-.8,0);const l=new THREE.Mesh(ge,mt(co));l.position.set(x,1.7,z);if(i%2===0){const k=new THREE.Mesh(new THREE.BoxGeometry(.33,.5,.33),mt(0xffffff));k.position.y=-1.35;l.add(k)}g.add(l);legs.push(l)});
  g.scale.setScalar(.9);return{g,legs}}
-function labelSprite(){const c=document.createElement("canvas");c.width=256;c.height=100;const g=c.getContext("2d");g.fillStyle="#f2b705";g.strokeStyle="#10273b";g.lineWidth=6;g.fillRect(4,4,248,70);g.strokeRect(4,4,248,70);g.beginPath();g.moveTo(108,74);g.lineTo(128,98);g.lineTo(148,74);g.closePath();g.fill();g.stroke();g.fillStyle="#10273b";g.textAlign="center";g.font="bold 30px Georgia";g.fillText("YOUR BET",128,36);g.font="bold 22px system-ui";g.fillText("#"+(pick+1)+" "+horses[pick].nm,128,64);
- const sy=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));sy.scale.set(8,3.1,1);sy.position.set(0,7.5,0);sy.renderOrder=9;return sy}
+function labelSprite(){const c=document.createElement("canvas");c.width=256;c.height=72;const g=c.getContext("2d");g.fillStyle="#f2b705";g.strokeStyle="#10273b";g.lineWidth=6;g.fillRect(4,4,248,50);g.strokeRect(4,4,248,50);g.beginPath();g.moveTo(112,54);g.lineTo(128,70);g.lineTo(144,54);g.closePath();g.fill();g.stroke();g.fillStyle="#10273b";g.textAlign="center";g.font="bold 32px Georgia";g.fillText("YOUR BET",128,42);
+ const sy=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));sy.scale.set(3.4,.95,1);sy.position.set(0,5.5,0);sy.renderOrder=9;return sy}
 function startRace(){
  if(!T3)init3();while(T3.grp.children.length)T3.grp.remove(T3.grp.children[0]);
  $("mudb").textContent="Track mud "+mud+"/10 · one full lap";$("betb").innerHTML="🎟️ <b>#"+(pick+1)+" "+horses[pick].nm+"</b> · "+INR(bet);
@@ -353,6 +385,65 @@ function backend(order){
  const rows=order.map((h,k)=>({place:k+1,horse:h.nm,lane:h.lane,true_mean_s:+h.mean.toFixed(2),noise_s:+(h.t-h.mean).toFixed(2),final_s:+h.t.toFixed(2),win_chance_pct:+(wins[h.i]/sims*100).toFixed(1)}));
  const txt="Race "+day+" · PRNG seed before this race: "+raceSeed+" (LCG: seed × 16807 mod 2147483647)\nWinner: "+order[0].nm+"\nfinish time = true_mean + noise\ntrue_mean = 92.7 − 0.35·speed5 − 0.15·speed3 + 0.45·mud + 0.12·jockeyKg − 0.06·restDays − 0.05·stamina − 0.06·jockeyYears + 0.12·lane + 0.08·age − 0.025·trainer% + 0.012·horseKg − 0.1·distWins\nnoise = (u1+u2+u3+u4 − 2) × 1.7 × 1.4, each u uniform 0–1 (≈ Normal, SD ≈ 1.4 s)\nWin chance = share of 3,000 re-runs of this same race with fresh noise.\nImpact per 1 SD of the factor (s): speed5 1.21, stamina 0.72, speed3 0.55, jockeyKg 0.42, jockeyYears 0.35, horseKg 0.35, lane 0.28, trainer 0.25, rest 0.21, distWins 0.20, age 0.18; mud 1.42 but identical for every horse in a race.";
  console.log("%cLAST BET · BACKEND","font-weight:bold;font-size:14px");console.log(txt);console.table(rows);return{txt,rows}}
+/* learn */
+const EX=[[54,78.4],[55,77.1],[56,77.9],[57,76.2],[58,75.3],[59,75.9],[60,74.1],[61,73.8],[62,74.6],[63,72.5],[64,72.9],[65,71.2],[66,71.9],[57.5,76.6],[60.5,74.7],[63.5,73.1]];
+const gx=x=>34+(x-52)/16*272,gy=y=>176-(y-70)/10*156;
+const AXs="<line x1='34' y1='176' x2='306' y2='176' stroke='currentColor' opacity='.4'/><line x1='34' y1='20' x2='34' y2='176' stroke='currentColor' opacity='.4'/><text x='170' y='196' font-size='11' text-anchor='middle' fill='currentColor' opacity='.7'>Speed (km/h) →</text><text x='10' y='98' font-size='11' fill='currentColor' opacity='.7' transform='rotate(-90 10 98)' text-anchor='middle'>Finish time (s)</text>";
+const DOTS=EX.map(d=>`<circle cx='${gx(d[0]).toFixed(1)}' cy='${gy(d[1]).toFixed(1)}' r='4.5' fill='currentColor'/>`).join("");
+const LX=["Fast horses finish sooner. A line through past races predicts a new horse’s time. Drag the speed.","Each clue pushes the time up or down from a baseline. Tap a clue to switch it off.","The dots miss the line by a little. The best line has the smallest miss. Tilt it!"];
+const WF=[["🏃 Speed 62 km/h × −0.5",-31],["🫀 Stamina 70 × −0.05",-3.5],["⚖️ Jockey 55 kg × +0.12",6.6],["🌧️ Mud 5 × +0.45",2.25]];
+const fit1=()=>{const n=EX.length,mx=EX.reduce((a,d)=>a+d[0],0)/n,my=EX.reduce((a,d)=>a+d[1],0)/n;let nu=0,de=0;EX.forEach(d=>{nu+=(d[0]-mx)*(d[1]-my);de+=(d[0]-mx)**2});return{b:nu/de,mx,my}};
+function lg(){const{b,mx,my}=fit1();let h="";
+ if(ls===0){const f=x=>my+b*(x-mx),y=f(l1);
+  h=`<svg class='lsv' viewBox='0 0 320 200'>${AXs}${DOTS}<line x1='${gx(52)}' y1='${gy(f(52))}' x2='${gx(68)}' y2='${gy(f(68))}' stroke='#e3a400' stroke-width='4' stroke-linecap='round'/><path d='M${gx(l1)} 176V${gy(y)}H34' fill='none' stroke='#d64541' stroke-dasharray='5 4' stroke-width='2'/><circle cx='${gx(l1)}' cy='${gy(y)}' r='7' fill='#d64541'/><text x='${gx(l1)-6}' y='${gy(y)-12}' text-anchor='end' font-size='13' font-weight='700' fill='#d64541'>Predicted ${y.toFixed(1)}s</text></svg>`;$("lv").textContent=l1.toFixed(1)+" km/h"}
+ else if(ls===1){const tot=100+WF.reduce((a,w,j)=>a+(l2[j]?w[1]:0),0);
+  h=`<div class='wfb'><div class='wf base'><span>🧮 Baseline</span><i style='width:100%;background:#9aa7b3'></i><b>100s</b></div>`+WF.map((w,j)=>`<button class='wf${l2[j]?"":" off"}' data-j='${j}'><span>${w[0]}</span><i style='width:${Math.abs(w[1])/35*100}%;background:${w[1]<0?"#23824f":"#c93a35"}'></i><b>${w[1]>0?"+":""}${w[1]}s</b></button>`).join("")+`<div class='wf tot'><span>🎯 Predicted time</span><b>${tot.toFixed(1)}s</b></div></div>`}
+ else{const f=x=>my+l3*(x-mx),q=g=>Math.sqrt(EX.reduce((a,d)=>a+(d[1]-g(d[0]))**2,0)/EX.length),rm=q(f),best=q(x=>my+b*(x-mx));
+  h=`<svg class='lsv' viewBox='0 0 320 200'>${AXs}${EX.map(d=>`<line x1='${gx(d[0])}' y1='${gy(d[1])}' x2='${gx(d[0])}' y2='${gy(f(d[0]))}' stroke='#c93a35' stroke-width='2.5'/>`).join("")}${DOTS}<line x1='${gx(52)}' y1='${gy(f(52))}' x2='${gx(68)}' y2='${gy(f(68))}' stroke='#e3a400' stroke-width='4' stroke-linecap='round'/></svg><div class='chips'><div>🎯 Your miss<b>${rm.toFixed(2)}s</b></div><div>🏆 Best line<b>${best.toFixed(2)}s</b></div><div>${rm<best*1.08?"✅":"↔️"}<b>${rm<best*1.08?"Best!":"Tilt"}</b></div></div>`;$("lv").textContent=l3.toFixed(2)}
+ $("lg").innerHTML=h}
+function learn(){$("lh").textContent=["🧠 A line that predicts","🧩 Clues add up","🎯 The best line"][ls];$("lx").textContent=LX[ls];
+ $("lctl").innerHTML=ls===0?`<label class="sli"><span class="sn">🏃 New horse’s speed</span><span class="sv" id="lv"></span><input type="range" id="lr" min="54" max="66" step="0.5" value="${l1}"></label>`:ls===2?`<label class="sli"><span class="sn">📐 Tilt the line</span><span class="sv" id="lv"></span><input type="range" id="lr" min="-1.2" max="0.2" step="0.01" value="${l3}"></label>`:"";
+ $("ld").innerHTML=[0,1,2].map(i=>`<i class="${i===ls?"on":""}"></i>`).join("");$("ln").textContent=ls<2?"Next ▶":"How to play ▶";$("lb").disabled=!ls;lg()}
+$("lctl").oninput=e=>{if(ls===0)l1=+e.target.value;else l3=+e.target.value;lg()};
+$("lg").onclick=e=>{const b=e.target.closest("[data-j]");if(!b)return;l2[+b.dataset.j]^=1;lg()};
+$("ln").onclick=()=>{if(ls<2){ls++;learn()}else show("how")};$("lb").onclick=()=>{if(ls){ls--;learn()}};$("lskip").onclick=()=>show("how");
+
+/* stats */
+const IMP={speed:1.21,last3:.55,mud:1.42,stam:.72,jw:.42,jexp:.35,hw:.35,lane:.28,trn:.25,rest:.21,wins:.2,age:.18},EFF={...IMP,last3:.28,mud:0};
+function restart(){cash=25000;day=1;sel=[];owned=[];over=false;stake=1000;hist=[];spent=0;initData();hud();facUI();show("fac")}
+$("again").onclick=restart;
+function drawRes(){const c=$("rcv"),g=c.getContext("2d"),dpr=devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;c.width=w*dpr;c.height=h*dpr;g.setTransform(dpr,0,0,dpr,0,0);
+ const all=hist.flatMap(x=>x.rows.map(r=>({e:r.t-r.pred,me:r.i===x.pick}))),n=all.length||1,L=34,bw=(w-L-6)/n,mid=(h-18)/2,sc=(mid-6)/5,mut=css("--mut"),bd=css("--bd");
+ g.font="11px system-ui";g.lineWidth=1;g.strokeStyle=bd;g.fillStyle=mut;
+ [-4,-2,0,2,4].forEach(v=>{const y=mid-v*sc;g.beginPath();g.moveTo(L,y);g.lineTo(w-4,y);g.stroke();g.fillText((v>0?"+":"")+v,2,y+4)});
+ all.forEach((d,i)=>{const e=Math.max(-5,Math.min(5,d.e)),x=L+i*bw+bw*.12,y=e>0?mid-e*sc:mid,hh=Math.abs(e)*sc;g.fillStyle=d.e>0?css("--bad"):css("--good");g.fillRect(x,y,bw*.76,hh);if(d.me){g.strokeStyle="#e3a400";g.lineWidth=2;g.strokeRect(x,y,bw*.76,hh);g.lineWidth=1;g.strokeStyle=bd}});
+ g.fillStyle=mut;hist.forEach((x,k)=>{g.fillText("R"+(k+1),L+k*8*bw+2,h-4);if(k){g.beginPath();g.moveTo(L+k*8*bw,4);g.lineTo(L+k*8*bw,h-16);g.stroke()}})}
+function stats(){
+ const rs=hist.map(h=>h.rows.reduce((a,r)=>a+Math.abs(r.t-r.pred),0)/h.rows.length),avg=rs.reduce((a,b)=>a+b,0)/rs.length,top3=hist.filter(h=>h.rank<=3).length,mx=Math.max(...rs,1.5);
+ const cap=Math.min(100,Math.round(owned.reduce((a,k)=>a+EFF[k],0)/3.05*100));
+ $("sk").innerHTML=`<div>🪙 Final<b>${INR(cash)}</b></div><div>🏅 Top-3 bets<b>${top3}/${hist.length}</b></div><div>🛒 Clue spend<b>${INR(spent)}</b></div><div>🎯 Avg miss<b>${avg.toFixed(2)}s</b></div>`;
+ $("sb").innerHTML=rs.map((v,i)=>`<div class="hb"><span>Race ${i+1}</span><i style="width:${v/mx*100}%"></i><b>${v.toFixed(2)}s</b></div>`).join("")+`<p class="note">Even a perfect model misses about 1.1s per horse. That part is pure luck.</p>`;
+ $("cr").innerHTML=Object.keys(IMP).sort((a,b)=>IMP[b]-IMP[a]).map(k=>{const f=F.find(f=>f.k===k);return`<div class="hb${owned.includes(k)?" mine":""}"><span>${f.i} ${f.s}</span><i style="width:${IMP[k]/1.42*100}%"></i><b>${IMP[k].toFixed(2)}s${k==="mud"?"*":""}</b></div>`}).join("")+`<p class="note">How many seconds a typical spread of each clue changes a finish time. Gold = your final clues. *Mud hits every horse equally, so it sharpens times but never changes the order. Speed 3 overlaps Speed 5.</p>`;
+ $("sv").innerHTML=`<i>${cap>=85?"🏆":cap>=60?"👍":"🤔"}</i><span>Your clues captured ${cap}% of what the best five could. ${cap>=85?"Great choices!":"Top picks: Speed 5, Stamina, Jockey kg, Jockey yrs, Horse kg."}</span>`;
+ show("stats");drawRes()}
+
+/* music + sound */
+const AU={ctx:null,on:true,cur:null,i:0,t:0,tm:null};
+const MAPM={intro:"menu",story:"menu",learn:"menu",how:"menu",race:"race"},mid=n=>440*2**((n-69)/12);
+const TR={menu:{d:.25,w:"square",m:[72,0,76,79,0,76,72,0,74,0,77,81,0,77,74,0],b:[48,0,0,0,55,0,0,0,50,0,0,0,57,0,0,0]},
+ think:{d:.32,w:"triangle",m:[69,0,72,0,76,0,72,0,67,0,71,0,74,0,71,0],b:[45,0,0,0,52,0,0,0,43,0,0,0,50,0,0,0]},
+ race:{d:.14,w:"square",m:[76,0,76,0,79,0,76,0,72,0,74,0,76,0,0,0,77,0,77,0,81,0,77,0,74,0,76,0,79,0,0,0],b:[40,0,47,0,40,0,47,0,40,0,47,0,40,0,47,0,41,0,48,0,41,0,48,0,43,0,50,0,43,0,50,0]}};
+function tone(f,t,d,type,v){const c=AU.ctx,o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AU.g);o.start(t);o.stop(t+d+.05)}
+function au(){if(!AU.ctx){const A=window.AudioContext||window.webkitAudioContext;if(!A)return false;AU.ctx=new A();AU.g=AU.ctx.createGain();AU.g.gain.value=.16;AU.g.connect(AU.ctx.destination);AU.t=AU.ctx.currentTime+.1;AU.tm=setInterval(sched,60)}if(AU.ctx.state==="suspended")AU.ctx.resume();return true}
+function sched(){if(!AU.ctx)return;if(!AU.on||!AU.cur){AU.t=AU.ctx.currentTime+.1;return}const k=TR[AU.cur];while(AU.t<AU.ctx.currentTime+.25){const i=AU.i%k.m.length;if(k.m[i])tone(mid(k.m[i]),AU.t,k.d*1.5,k.w,.45);if(k.b[i])tone(mid(k.b[i]),AU.t,k.d*2.2,"triangle",.7);AU.t+=k.d;AU.i++}}
+function mus(id){const n=MAPM[id]||"think";if(AU.cur!==n){AU.cur=n;AU.i=0}}
+function sfx(n){if(!AU.on||!AU.ctx)return;const t=AU.ctx.currentTime;if(n==="click")tone(880,t,.06,"square",.25);else if(n==="go"){tone(660,t,.15,"square",.4);tone(660,t+.3,.15,"square",.4);tone(990,t+.6,.35,"square",.4)}}
+function jingle(v){if(!AU.on||!AU.ctx||!v)return;AU.cur=null;const t=AU.ctx.currentTime+.05;(v>0?[72,76,79,84,79,84]:[67,64,60]).forEach((n,i)=>tone(mid(n),t+i*(v>0?.13:.28),v>0?.3:.45,v>0?"square":"triangle",.5));setTimeout(()=>mus(document.body.dataset.s),v>0?1500:1400)}
+$("snd").onclick=()=>{AU.on=!AU.on;$("snd").textContent=AU.on?"🔊":"🔇";if(AU.ctx)AU.g.gain.value=AU.on?.16:0;else if(AU.on)au()};
+addEventListener("pointerdown",()=>{au();mus(document.body.dataset.s)},{once:true});
+document.addEventListener("click",e=>{if(e.target.closest("button")&&e.target.id!=="snd")sfx("click")});
+document.addEventListener("visibilitychange",()=>{if(!AU.ctx)return;document.hidden?AU.ctx.suspend():AU.ctx.resume()});
+
 /* settlement */
 const MUL=[2,1.25,1];
 function conf(){const f=document.createElement("div");f.className="cf";for(let i=0;i<40;i++){const e=document.createElement("i");e.style.cssText="left:"+Math.random()*100+"%;background:"+HEX[i%8]+";animation-delay:"+Math.random()*.7+"s";f.appendChild(e)}document.body.appendChild(f);setTimeout(()=>f.remove(),4000)}
@@ -361,7 +452,7 @@ function finish(){
  const payout=rank<=3?Math.round(bet*MUL[rank-1]):0,net=payout-bet;cash+=payout;
  const pm=Math.abs(ph.pred-ph.t),you=rmse(m,data);
  const tip=rank===1?"Your model called it!":rank<=3?"On the podium. The model works.":pm<=1.5?"Bad luck, not a bad model.":"Missed by "+pm.toFixed(1)+"s. Re-tune the lab.";
- horses.forEach(h=>data.push(h));
+ hist.push({rows:order.map(h=>({i:h.i,pred:h.pred,t:h.t})),pick:ph.i,rank});horses.forEach(h=>data.push(h));
  const head=["YOU WON!","2nd place!","3rd: money back"][rank-1]||"Not this time",medal=["🥇","🥈","🥉"][rank-1]||"💸",cl=net>0?"w":net<0?"l":"e";
  let end="";if(cash<1000){over=true;end="<div class='say'><i>💀</i><span>Out of coins. Trust the line next time.</span></div>"}
  else if(day>=6){over=true;end="<div class='say'><i>"+(cash>=60000?"🏆":cash>25000?"🎉":"📚")+"</i><span>"+(cash>=60000?"LEGEND! "+INR(cash)+" in the bank.":cash>25000?"You beat the track with "+INR(cash)+"!":"Below your ₹25,000 start. Try new clues next time.")+"</span></div>"}
@@ -372,9 +463,9 @@ function finish(){
  <div class="pod">${pod}</div><div class="say"><i>👩‍🏫</i><span>${tip}</span></div>${end}
  <details class="bk"><summary>📋 Full results</summary><div class="tw"><table><thead><tr><th>Place</th><th>Horse</th><th>Predicted</th><th>Actual</th><th>Miss</th></tr></thead><tbody>${rows}</tbody></table></div></details>
  <details class="bk"><summary>🛠️ Behind the scenes</summary><pre>${bk.txt}</pre><div class="tw"><table><thead><tr><th>Place</th><th>Horse</th><th>True mean</th><th>Noise</th><th>Final</th><th>Win chance</th></tr></thead><tbody>${bk.rows.map(r=>`<tr><td>${ORD(r.place)}</td><td>${r.horse}</td><td>${r.true_mean_s}s</td><td>${r.noise_s>0?"+":""}${r.noise_s}s</td><td>${r.final_s}s</td><td>${r.win_chance_pct}%</td></tr>`).join("")}</tbody></table></div></details>
- <div class="bar"><span></span><button class="pri big" id="nxt">${over?"🔁 Play again":"Next race ▶"}</button></div>`;
- $("nxt").onclick=()=>{if(over){cash=25000;day=1;sel=[];owned=[];over=false;stake=1000;initData();hud();facUI();show("fac")}else{day++;facUI();show("fac")}};
- hud();show("deb");if(net>0)conf()}
+ <div class="bar"><span>${over?'<button id="rst">📊 Reveal stats</button>':""}</span><button class="pri big" id="nxt">${over?"🔁 Play again":"Next race ▶"}</button></div>`;
+ $("nxt").onclick=()=>{if(over)restart();else{day++;facUI();show("fac")}};if($("rst"))$("rst").onclick=stats;
+ hud();show("deb");jingle(net>0?1:net<0?-1:0);if(net>0)conf()}
 </script>
 </body>
 </html>
